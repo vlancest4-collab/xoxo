@@ -61,22 +61,32 @@ main {
 /* =========================
    KARŞILAMA ALANI
 ========================= */
+.explore-button {
+    display: inline-block;
 
-.hero {
-    padding: 100px 30px;
+    background: #e99ab9;
+    color: #302d33;
 
-    margin-top: 30px;
+    text-decoration: none;
 
-    text-align: center;
+    padding: 14px 28px;
 
-    background: #302d33;
+    border-radius: 30px;
 
-    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
 
-    border: 1px solid #49434b;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
+
+.explore-button:hover {
+    background: #f5bfd4;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(233, 154, 185, 0.25);
+}
+
 
 .hero h2 {
     color: #f7c2d7;
