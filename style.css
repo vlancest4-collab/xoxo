@@ -481,3 +481,97 @@ footer {
 .search-box input::placeholder {
     color: #9f949c;
 }
+.profile-page {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.profile-box {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    background: #302d32;
+    border: 1px solid #48434a;
+    border-radius: 22px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.profile-box h2 {
+    color: #f2a5c7;
+    font-size: 30px;
+    margin: 10px 0 20px;
+}
+
+#userEmail {
+    color: #cfc3ca;
+    margin-bottom: 25px;
+}
+
+#username {
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    border: 1px solid #5a535c;
+    border-radius: 12px;
+    background: #242124;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+#username:focus {
+    border-color: #e995ba;
+}
+
+#saveBtn,
+#logoutBtn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+#saveBtn {
+    background: #e995ba;
+    color: #272329;
+}
+
+#saveBtn:hover {
+    background: #f2adcb;
+}
+
+#logoutBtn {
+    background: #403b42;
+    color: #f5dce7;
+}
+
+#logoutBtn:hover {
+    background: #4b454d;
+}
+
+#message {
+    min-height: 20px;
+    margin-top: 18px;
+    color: #f2a5c7;
+}
+
+@media (max-width: 600px) {
+    .profile-page {
+        padding: 30px 15px;
+    }
+
+    .profile-box {
+        padding: 28px 20px;
+    }
+}
