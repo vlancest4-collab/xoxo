@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profil | XOXO</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <h1>XOXO</h1>
+
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="manga.html">Manga</a>
+        <a href="manhwa.html">Manhwa</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="profile-page">
+
+        <div class="profile-box">
+
+            <div class="angel-decoration">
+                ✦ 🪽 ✦
+            </div>
+
+            <h2>Profilim</h2>
+
+            <p id="userEmail"></p>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Kullanıcı adın"
+            >
+
+            <button id="saveBtn">
+                Profili Kaydet
+            </button>
+
+            <button id="logoutBtn">
+                Çıkış Yap
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://mzskvwfwvxlvftvouffh.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
+
+const { createClient } = supabase;
+
+const db = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+async function loadProfile() {
+
+    const { data: { session } } =
+        await db.auth.getSession();
+
+    if (!session) {
+
+        window.location.href = "auth.html";
+
+        return;
+    }
+
+    document.getElementById("userEmail").textContent =
+        session.user.email;
+
+}
+
+
+document.getElementById("logoutBtn")
+.addEventListener("click", async function () {
+
+    await db.auth.signOut();
+
+    window.location.href = "auth.html";
+
+});
+
+
+loadProfile();
+
+</script>
+
+</body>
+
+</html>
