@@ -167,7 +167,52 @@ logoutBtn.addEventListener("click", async function () {
 
 
 loadProfile();
+const avatarInput = document.getElementById("avatarInput");
+const avatarMessage = document.getElementById("avatarMessage");
+const avatar = document.querySelector(".profile-avatar");
 
+avatarInput.addEventListener("change", async function () {
+
+    const file = avatarInput.files[0];
+
+    if (!file) return;
+
+    avatarMessage.textContent = "Fotoğraf yükleniyor...";
+
+    const { data: { session } } = await db.auth.getSession();
+
+    if (!session) {
+        window.location.href = "auth.html";
+        return;
+    }
+
+    const fileExt = file.name.split(".").pop();
+    const fileName = session.user.id + "." + fileExt;
+
+    const { error } = await db.storage
+        .from("avatars")
+        .upload(fileName, file, {
+            upsert: true
+        });
+
+    if (error) {
+        avatarMessage.textContent = "Fotoğraf yüklenemedi.";
+        console.error(error);
+        return;
+    }
+
+    const { data } = db.storage
+        .from("avatars")
+        .getPublicUrl(fileName);
+
+    avatar.innerHTML = `
+        <img src="${data.publicUrl}"
+             style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+    `;
+
+    avatarMessage.textContent = "Fotoğraf kaydedildi!";
+
+});
 </script>
 
 </body>
