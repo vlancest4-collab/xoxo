@@ -40,7 +40,13 @@
     <section class="manga-section">
 
         <h2>Mangalar</h2>
-
+<div class="search-box">
+    <input
+        type="text"
+        id="mangaSearch"
+        placeholder="Manga ara..."
+    >
+</div>
         <div class="manga-container">
 
 
@@ -103,6 +109,23 @@ async function openManga() {
 
     window.location.href = "manga-okuma.html";
 }
+const search = document.getElementById("mangaSearch");
+const cards = document.querySelectorAll(".manga-card");
+
+search.addEventListener("input", function () {
+
+    const text = search.value.toLowerCase();
+
+    cards.forEach(function (card) {
+
+        const title = card.querySelector("h3").textContent.toLowerCase();
+
+        card.style.display =
+            title.includes(text) ? "" : "none";
+
+    });
+
+});
 </script>
 
 </body>
