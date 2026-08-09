@@ -44,7 +44,7 @@
         <div class="manga-container">
 
 
-            <div class="manga-card">
+            <div class="manga-card" onclick="openManga()">
 
                 <div class="cover">
                     KAPAK
@@ -80,7 +80,7 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL = "https://mzskvwfwvxlvftvouffh.supabase.co";
 const SUPABASE_KEY = "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
@@ -104,6 +104,6 @@ async function openManga() {
     window.location.href = "manga-okuma.html";
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </body>
 </html>
