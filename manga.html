@@ -57,7 +57,7 @@
             </div>
 
 
-            <div class="manga-card">
+            <div class="manga-card" onclick="openManga()">
 
                 <div class="cover">
                     KAPAK
@@ -82,6 +82,29 @@
     <p>© 2026 XOXO</p>
 
 </footer>
+<script>
+const SUPABASE_URL = "https://mzskvwfwvxlvftvouffh.supabase.co";
+const SUPABASE_KEY = "BURAYA_PUBLISHABLE_KEY";
 
+const { createClient } = supabase;
+
+const db = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+async function openManga() {
+
+    const { data: { session } } = await db.auth.getSession();
+
+    if (!session) {
+        window.location.href = "auth.html";
+        return;
+    }
+
+    window.location.href = "manga-okuma.html";
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </body>
 </html>
