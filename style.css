@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #111111;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+
+/* ÜST MENÜ */
+
+header {
+    background: #1b1b1b;
+    padding: 20px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #ff5fa2;
+    font-size: 32px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+}
+
+nav a:hover {
+    color: #ff5fa2;
+}
+
+
+/* ANA BÖLÜM */
+
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* BÜYÜK KARŞILAMA ALANI */
+
+.hero {
+    padding: 100px 30px;
+    text-align: center;
+
+    background: #202020;
+    margin-top: 30px;
+    border-radius: 15px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #bbbbbb;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    background: #ff5fa2;
+    color: white;
+
+    border: none;
+    padding: 14px 25px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background: #ff3d8d;
+}
+
+
+/* MANGA BÖLÜMÜ */
+
+.manga-section {
+    padding: 50px 30px;
+}
+
+.manga-section h2 {
+    margin-bottom: 30px;
+}
+
+
+/* MANGA KARTLARI */
+
+.manga-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.manga-card {
+    background: #1d1d1d;
+
+    width: 200px;
+
+    padding-bottom: 15px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.cover {
+    height: 280px;
+
+    background: #333;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #999;
+}
+
+.manga-card h3 {
+    padding: 15px 15px 5px;
+}
+
+.manga-card p {
+    padding: 0 15px;
+    color: #aaaaaa;
+}
+
+
+/* ALT KISIM */
+
+footer {
+    text-align: center;
+
+    padding: 40px;
+
+    color: #777;
+
+    margin-top: 50px;
+}
