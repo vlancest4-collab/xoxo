@@ -95,6 +95,15 @@
         <p>© 2026 XOXO Manga</p>
 
     </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = "https://mzskvwfwvxlvftvouffh.supabase.co";
+const SUPABASE_KEY = "BURAYA_PUBLISHABLE_KEY";
+
+const { createClient } = supabase;
+
+const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+</script>
 </body>
 </html>
