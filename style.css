@@ -5,40 +5,52 @@
 }
 
 body {
-    background: #111111;
-    color: white;
+    background: #242226;
+    color: #f8eef4;
     font-family: Arial, sans-serif;
 }
 
 
-/* ÜST MENÜ */
+/* =========================
+   ÜST MENÜ
+========================= */
 
 header {
-    background: #1b1b1b;
+    background: #302d33;
+
     padding: 20px 50px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    border-bottom: 1px solid #4b454d;
 }
 
 header h1 {
-    color: #ff5fa2;
+    color: #f5a9c7;
     font-size: 32px;
+    letter-spacing: 2px;
 }
 
 nav a {
-    color: white;
+    color: #eee4e9;
+
     text-decoration: none;
+
     margin-left: 25px;
+
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #ff5fa2;
+    color: #f5a9c7;
 }
 
 
-/* ANA BÖLÜM */
+/* =========================
+   ANA SAYFA
+========================= */
 
 main {
     max-width: 1200px;
@@ -46,108 +58,178 @@ main {
 }
 
 
-/* BÜYÜK KARŞILAMA ALANI */
+/* =========================
+   KARŞILAMA ALANI
+========================= */
 
 .hero {
     padding: 100px 30px;
+
+    margin-top: 30px;
+
     text-align: center;
 
-    background: #202020;
-    margin-top: 30px;
-    border-radius: 15px;
+    background: #302d33;
+
+    border-radius: 20px;
+
+    border: 1px solid #49434b;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .hero h2 {
+    color: #f7c2d7;
+
     font-size: 40px;
+
     margin-bottom: 20px;
 }
 
 .hero p {
-    color: #bbbbbb;
+    color: #cfc3ca;
+
     font-size: 18px;
+
     margin-bottom: 30px;
 }
 
+
+/* =========================
+   BUTON
+========================= */
+
 .hero button {
-    background: #ff5fa2;
-    color: white;
+    background: #e99ab9;
+
+    color: #302d33;
 
     border: none;
-    padding: 14px 25px;
 
-    border-radius: 8px;
+    padding: 14px 28px;
+
+    border-radius: 30px;
 
     font-size: 16px;
 
+    font-weight: bold;
+
     cursor: pointer;
+
+    transition: 0.3s;
 }
 
 .hero button:hover {
-    background: #ff3d8d;
+    background: #f5bfd4;
+
+    transform: translateY(-2px);
 }
 
 
-/* MANGA BÖLÜMÜ */
+/* =========================
+   MANGA BÖLÜMÜ
+========================= */
 
 .manga-section {
-    padding: 50px 30px;
+    padding: 60px 30px;
 }
 
 .manga-section h2 {
+    color: #f5b2cd;
+
     margin-bottom: 30px;
+
+    font-size: 28px;
 }
 
 
-/* MANGA KARTLARI */
+/* =========================
+   MANGA KARTLARI
+========================= */
 
 .manga-container {
     display: flex;
+
     gap: 25px;
+
     flex-wrap: wrap;
 }
 
 .manga-card {
-    background: #1d1d1d;
+    background: #302d33;
 
     width: 200px;
 
     padding-bottom: 15px;
 
-    border-radius: 10px;
+    border-radius: 15px;
 
     overflow: hidden;
+
+    border: 1px solid #49434b;
+
+    transition: 0.3s;
 }
+
+.manga-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #e99ab9;
+
+    box-shadow: 0 10px 25px rgba(233, 154, 185, 0.15);
+}
+
+
+/* =========================
+   KAPAK
+========================= */
 
 .cover {
     height: 280px;
 
-    background: #333;
+    background: #403b42;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
-    color: #999;
+    color: #b9adb5;
+
+    font-size: 14px;
 }
+
+
+/* =========================
+   MANGA YAZILARI
+========================= */
 
 .manga-card h3 {
     padding: 15px 15px 5px;
+
+    color: #f5dce7;
 }
 
 .manga-card p {
     padding: 0 15px;
-    color: #aaaaaa;
+
+    color: #c2b5bd;
 }
 
 
-/* ALT KISIM */
+/* =========================
+   ALT KISIM
+========================= */
 
 footer {
     text-align: center;
 
     padding: 40px;
 
-    color: #777;
-
     margin-top: 50px;
+
+    color: #8f858c;
+
+    border-top: 1px solid #403b42;
 }
