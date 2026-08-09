@@ -1,141 +1,265 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XOXO - Giriş Yap</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Giriş / Kayıt | XOXO</title>
+
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        body {
-            margin: 0;
-            background: #242124;
-            color: #f5f0f3;
-            font-family: Arial, sans-serif;
-        }
 
-        header {
-            background: #302d32;
-            padding: 22px 6%;
-            border-bottom: 1px solid #48434a;
-        }
+        .auth-page {
+            min-height: 75vh;
 
-        header a {
-            color: #f09bc0;
-            text-decoration: none;
-            font-size: 28px;
-            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
         }
 
         .auth-box {
-            width: 90%;
+            width: 100%;
             max-width: 430px;
-            margin: 80px auto;
+
             padding: 35px;
+
             background: #302d32;
+
             border: 1px solid #48434a;
+
             border-radius: 20px;
+
             box-sizing: border-box;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.25);
         }
 
-        h1 {
-            color: #f2a5c7;
+        .auth-decoration {
             text-align: center;
+
+            color: #f2a5c7;
+
+            font-size: 24px;
+
+            margin-bottom: 15px;
         }
 
-        input {
+        .auth-box h1 {
+            color: #f2a5c7;
+
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+        .auth-box input {
             width: 100%;
+
             box-sizing: border-box;
+
             padding: 14px;
+
             margin: 8px 0 15px;
+
             border: 1px solid #5a535c;
+
             border-radius: 10px;
+
             background: #242124;
+
             color: white;
+
             font-size: 15px;
+
+            outline: none;
         }
 
-        button {
+        .auth-box input:focus {
+            border-color: #e995ba;
+        }
+
+        .auth-box button {
             width: 100%;
+
             padding: 14px;
+
             margin-top: 8px;
+
             border: none;
+
             border-radius: 25px;
+
             background: #e995ba;
+
             color: #272329;
+
             font-size: 16px;
+
             font-weight: bold;
+
             cursor: pointer;
         }
 
-        button:hover {
+        .auth-box button:hover {
             background: #f2adcb;
         }
 
         .switch {
             text-align: center;
+
             margin-top: 20px;
+
+            color: #cfc3ca;
         }
 
         .switch a {
             color: #f2a5c7;
+
             cursor: pointer;
+
+            margin-left: 5px;
         }
 
         #message {
             text-align: center;
+
             margin-top: 15px;
+
+            min-height: 20px;
         }
+
+        @media (max-width: 600px) {
+
+            .auth-page {
+                padding: 25px 15px;
+            }
+
+            .auth-box {
+                padding: 25px 20px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <a href="index.html">XOXO</a>
-</header>
 
-<div class="auth-box">
+    <div class="header-inner">
 
-    <h1 id="title">Kayıt Ol</h1>
+        <a href="index.html" class="logo">
+            XOXO
+        </a>
 
-    <form id="authForm">
+        <nav>
 
-        <input
-            type="email"
-            id="email"
-            placeholder="E-posta adresin"
-            required
-        >
+            <a href="index.html">
+                Ana Sayfa
+            </a>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Şifren"
-            required
-        >
+            <a href="manga.html">
+                Manga
+            </a>
 
-        <button type="submit" id="submitBtn">
-            Kayıt Ol
-        </button>
+            <a href="manhwa.html">
+                Manhwa
+            </a>
 
-    </form>
+            <a href="hakkimizda.html">
+                Hakkımızda
+            </a>
 
-    <div class="switch">
-        <span id="switchText">Zaten hesabın var mı?</span>
-        <a id="switchBtn">Giriş Yap</a>
+        </nav>
+
     </div>
 
-    <p id="message"></p>
+</header>
 
-</div>
+
+<main class="auth-page">
+
+    <div class="auth-box">
+
+        <div class="auth-decoration">
+            ✦ 🪽 ✦
+        </div>
+
+        <h1 id="title">
+            Kayıt Ol
+        </h1>
+
+
+        <form id="authForm">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="E-posta adresin"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Şifren"
+                minlength="6"
+                required
+            >
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Kayıt Ol
+            </button>
+
+        </form>
+
+
+        <div class="switch">
+
+            <span id="switchText">
+                Zaten hesabın var mı?
+            </span>
+
+            <a id="switchBtn">
+                Giriş Yap
+            </a>
+
+        </div>
+
+
+        <p id="message"></p>
+
+    </div>
+
+</main>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 
-const SUPABASE_URL = "https://mzskvwfwvxlvftvouffh.supabase.co";
+const SUPABASE_URL =
+    "https://mzskvwfwvxlvftvouffh.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
+const SUPABASE_KEY =
+    "BURAYA_PUBLISHABLE_KEYIN";
+
 
 const { createClient } = supabase;
 
@@ -145,103 +269,155 @@ const db = createClient(
 );
 
 
-let loginMode = false;
+let isLogin = false;
 
 
-const form = document.getElementById("authForm");
-const title = document.getElementById("title");
-const submitBtn = document.getElementById("submitBtn");
-const switchText = document.getElementById("switchText");
-const switchBtn = document.getElementById("switchBtn");
-const message = document.getElementById("message");
+const form =
+    document.getElementById("authForm");
+
+const title =
+    document.getElementById("title");
+
+const submitBtn =
+    document.getElementById("submitBtn");
+
+const switchText =
+    document.getElementById("switchText");
+
+const switchBtn =
+    document.getElementById("switchBtn");
+
+const message =
+    document.getElementById("message");
 
 
-switchBtn.addEventListener("click", () => {
+/* GİRİŞ / KAYIT DEĞİŞTİR */
 
-    loginMode = !loginMode;
+switchBtn.addEventListener("click", function () {
 
-    if (loginMode) {
+    isLogin = !isLogin;
+
+    message.textContent = "";
+
+    if (isLogin) {
 
         title.textContent = "Giriş Yap";
+
         submitBtn.textContent = "Giriş Yap";
-        switchText.textContent = "Hesabın yok mu?";
-        switchBtn.textContent = "Kayıt Ol";
+
+        switchText.textContent =
+            "Hesabın yok mu?";
+
+        switchBtn.textContent =
+            "Kayıt Ol";
 
     } else {
 
         title.textContent = "Kayıt Ol";
+
         submitBtn.textContent = "Kayıt Ol";
-        switchText.textContent = "Zaten hesabın var mı?";
-        switchBtn.textContent = "Giriş Yap";
+
+        switchText.textContent =
+            "Zaten hesabın var mı?";
+
+        switchBtn.textContent =
+            "Giriş Yap";
 
     }
-
-    message.textContent = "";
 
 });
 
 
-form.addEventListener("submit", async (e) => {
+/* FORM */
 
-    e.preventDefault();
+form.addEventListener("submit", async function (event) {
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    event.preventDefault();
 
-    message.textContent = "İşlem yapılıyor...";
+    const email =
+        document.getElementById("email").value.trim();
 
-
-    if (loginMode) {
-
-        const { error } = await db.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
-
-        if (error) {
-
-            message.textContent = "E-posta veya şifre hatalı.";
-
-            return;
-        }
-
-        message.textContent = "Giriş başarılı!";
-
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1000);
+    const password =
+        document.getElementById("password").value;
 
 
-    } else {
+    submitBtn.disabled = true;
 
-        const { error } = await db.auth.signUp({
+    message.textContent = "Lütfen bekle...";
 
-            email: email,
-            password: password,
 
-            options: {
-                emailRedirectTo:
-                "https://vlancest4-collab.github.io/xoxo/"
-            }
+    /* KAYIT */
 
-        });
+    if (!isLogin) {
+
+        const { data, error } =
+            await db.auth.signUp({
+
+                email: email,
+
+                password: password
+
+            });
 
 
         if (error) {
 
-            message.textContent = error.message;
+            message.textContent =
+                error.message;
+
+            submitBtn.disabled = false;
 
             return;
+
         }
+
 
         message.textContent =
-            "Kayıt başarılı! E-postanı kontrol edip hesabını doğrula. 💌";
+            "Kayıt başarılı! E-postanı kontrol et.";
+
+        submitBtn.disabled = false;
+
+        return;
 
     }
+
+
+    /* GİRİŞ */
+
+    const { data, error } =
+        await db.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        message.textContent =
+            "E-posta veya şifre hatalı.";
+
+        submitBtn.disabled = false;
+
+        return;
+
+    }
+
+
+    message.textContent =
+        "Giriş başarılı!";
+
+
+    window.location.href =
+        "profil.html";
 
 });
 
 </script>
 
+
 </body>
+
 </html>
