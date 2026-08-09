@@ -61,8 +61,6 @@
     </section>
 
 </main>
-
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -81,31 +79,84 @@ const db = createClient(
 );
 
 
+const userEmail = document.getElementById("userEmail");
+const username = document.getElementById("username");
+const saveBtn = document.getElementById("saveBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const message = document.getElementById("message");
+
+
 async function loadProfile() {
 
     const { data: { session } } =
         await db.auth.getSession();
 
     if (!session) {
-
         window.location.href = "auth.html";
-
         return;
     }
 
-    document.getElementById("userEmail").textContent =
-        session.user.email;
+    userEmail.textContent = session.user.email;
 
+    const { data } = await db
+        .from("profiles")
+        .select("username")
+        .eq("id", session.user.id)
+        .maybeSingle();
+
+    if (data) {
+        username.value = data.username || "";
+    }
 }
 
 
-document.getElementById("logoutBtn")
-.addEventListener("click", async function () {
+saveBtn.addEventListener("click", async function () {
+
+    const { data: { session } } =
+        await db.auth.getSession();
+
+    if (!session) {
+        window.location.href = "auth.html";
+        return;
+    }
+
+    const name = username.value.trim();
+
+    if (!name) {
+        message.textContent = "Kullanıcı adı boş olamaz.";
+        return;
+    }
+
+    saveBtn.disabled = true;
+    message.textContent = "Kaydediliyor...";
+
+    const { error } = await db
+        .from("profiles")
+        .upsert({
+            id: session.user.id,
+            username: name
+        });
+
+    if (error) {
+        message.textContent =
+            "Hata: " + error.message;
+
+        saveBtn.disabled = false;
+        return;
+    }
+
+    message.textContent =
+        "Profil başarıyla kaydedildi!";
+
+    saveBtn.disabled = false;
+});
+
+
+logoutBtn.addEventListener("click", async function () {
 
     await db.auth.signOut();
 
     window.location.href = "auth.html";
-
 });
 
 
