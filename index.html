@@ -1,109 +1,95 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>XOXO Manga</title>
+    <meta name="description" content="XOXO Manga - Manga ve Manhwa dünyasını keşfet.">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>XOXO</h1>
-<nav>
-    <a href="index.html">Ana Sayfa</a>
-    <a href="manga.html">Manga</a>
-    <a href="manhwa.html">Manhwa</a>
-    <a href="hakkimizda.html">Hakkımızda</a>
-</nav>
-   
-    </header>
+<header>
+    <div class="header-inner">
+
+        <a href="index.html" class="logo">XOXO</a>
+
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="manga.html">Manga</a>
+            <a href="manhwa.html">Manhwa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+        </nav>
+
+        <div class="account-area">
+            <a href="auth.html" class="login-button">Giriş / Kayıt</a>
+            <a href="profil.html" class="profile-button">Profil</a>
+        </div>
+
+    </div>
+</header>
 
 
-    <main>
+<main>
 
-        <section class="hero">
-           <div class="angel-decoration">✦ 🪽 ✦</div>
-            <h2>Manga & Manhwa Dünyasına Hoş Geldin</h2>
+    <section class="hero">
 
-            <p>
-                En sevdiğin serileri burada keşfet.
-            </p>
-<a href="manga.html" class="explore-button">
-    Mangaları Keşfet
-</a>
-           
-        </section>
+        <div class="angel-decoration">
+            ✦ 🪽 ✦
+        </div>
 
+        <h2>Manga & Manhwa Dünyasına Hoş Geldin</h2>
 
-        <section class="manga-section">
+        <p>
+            En sevdiğin serileri burada keşfet.
+        </p>
 
-            <h2>Son Eklenenler</h2>
+        <div class="search-box">
+            <input
+                type="text"
+                placeholder="Manga veya manhwa ara..."
+                id="searchInput"
+            >
 
-            <div class="manga-container">
+            <button onclick="searchManga()">
+                Ara
+            </button>
+        </div>
 
-                <div class="manga-card">
+        <a href="manga.html" class="explore-button">
+            Mangaları Keşfet
+        </a>
 
-                    <div class="cover">
-                        KAPAK
-                    </div>
+    </section>
 
-                    <h3>Manga Adı</h3>
-
-                    <p>Bölüm 10</p>
-
-                </div>
-
-
-                <div class="manga-card">
-
-                    <div class="cover">
-                        KAPAK
-                    </div>
-
-                    <h3>Başka Manga</h3>
-
-                    <p>Bölüm 25</p>
-
-                </div>
+</main>
 
 
-                <div class="manga-card">
+<footer>
+    <p>© 2026 XOXO Manga</p>
+</footer>
 
-                    <div class="cover">
-                        KAPAK
-                    </div>
-
-                    <h3>Yeni Seri</h3>
-
-                    <p>Bölüm 5</p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-
-        <p>© 2026 XOXO Manga</p>
-
-    </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://mzskvwfwvxlvftvouffh.supabase.co";
-const SUPABASE_KEY = "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
+function searchManga() {
 
-const { createClient } = supabase;
+    const search = document
+        .getElementById("searchInput")
+        .value
+        .trim();
 
-const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+    if (search !== "") {
+        window.location.href =
+            "manga.html?search=" + encodeURIComponent(search);
+    } else {
+        window.location.href = "manga.html";
+    }
+}
 </script>
+
 </body>
 </html>
