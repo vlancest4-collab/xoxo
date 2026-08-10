@@ -165,12 +165,8 @@ logoutBtn.addEventListener("click", async function () {
 
     window.location.href = "auth.html";
 });
-
-
-loadProfile();
 const avatarInput = document.getElementById("avatarInput");
-const avatarMessage = document.getElementById("avatarMessage");
-const avatar = document.querySelector(".profile-avatar");
+const avatarPreview = document.getElementById("avatarPreview");
 
 avatarInput.addEventListener("change", async function () {
 
@@ -178,105 +174,63 @@ avatarInput.addEventListener("change", async function () {
 
     if (!file) return;
 
-    avatarMessage.textContent = "Fotoğraf yükleniyor...";
-
     const { data: { session } } = await db.auth.getSession();
 
     if (!session) {
         window.location.href = "auth.html";
+        return;
+    }
+
+    // Sadece resim kabul et
+    if (!file.type.startsWith("image/")) {
+        alert("Lütfen bir fotoğraf seç.");
         return;
     }
 
     const fileExt = file.name.split(".").pop();
     const fileName = session.user.id + "." + fileExt;
 
-    const { error } = await db.storage
+    // Supabase Storage'a yükle
+    const { error: uploadError } = await db.storage
         .from("avatars")
         .upload(fileName, file, {
             upsert: true
         });
 
-    if (error) {
-        avatarMessage.textContent = "Fotoğraf yüklenemedi.";
-        console.error(error);
+    if (uploadError) {
+        console.error(uploadError);
+        alert("Fotoğraf yüklenemedi.");
         return;
     }
 
-    const { data } = db.storage
+    // Public URL al
+    const { data: urlData } = db.storage
         .from("avatars")
         .getPublicUrl(fileName);
 
-    avatar.innerHTML = `
-        <img src="${data.publicUrl}"
-             style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-    `;
+    const avatarUrl = urlData.publicUrl;
 
-    avatarMessage.textContent = "Fotoğraf kaydedildi!";
-
-});
-</script>
-<script>
-async function loadProfile() {
-
-    const { data: { session } } = await db.auth.getSession();
-
-    if (!session) {
-        window.location.href = "auth.html";
-        return;
-    }
-
-    const { data: profile } = await db
+    // profiles tablosundaki avatar_url'i güncelle
+    const { error: updateError } = await db
         .from("profiles")
-        .select("username")
-        .eq("id", session.user.id)
-        .maybeSingle();
+        .update({
+            avatar_url: avatarUrl
+        })
+        .eq("id", session.user.id);
 
-    if (profile) {
-        document.getElementById("username").value =
-            profile.username || "";
-    }
-}
-
-
-document.getElementById("saveBtn").addEventListener("click", async function () {
-
-    const { data: { session } } = await db.auth.getSession();
-
-    if (!session) {
-        window.location.href = "auth.html";
+    if (updateError) {
+        console.error(updateError);
+        alert("Fotoğraf kaydedilemedi.");
         return;
     }
 
-    const username =
-        document.getElementById("username").value.trim();
+    // Sayfada hemen göster
+    avatarPreview.src = avatarUrl;
 
-    const message =
-        document.getElementById("message");
-
-    if (!username) {
-        message.textContent = "Kullanıcı adı yazmalısın.";
-        return;
-    }
-
-    const { error } = await db
-        .from("profiles")
-        .upsert({
-            id: session.user.id,
-            username: username
-        });
-
-    if (error) {
-        console.error(error);
-        message.textContent = "Profil kaydedilemedi.";
-        return;
-    }
-
-    message.textContent = "Profil başarıyla kaydedildi! 🪽";
+    alert("Profil fotoğrafı kaydedildi!");
 });
 
 
-loadProfile();
-</script>
 </body>
 
 </html>
