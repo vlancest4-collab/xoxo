@@ -23,450 +23,438 @@
             padding: 40px 35px;
             border-radius: 28px;
             background: rgba(40, 36, 43, 0.96);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255,255,255,0.18);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.35);
             text-align: center;
         }
 
         .angel-decoration {
-            font-size: 28px;
+            font-size: 30px;
             margin-bottom: 25px;
         }
 
-        .avatar-area {
+        .avatar-wrapper {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 2px solid #e88db6;
+            margin: 0 auto 15px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            background: #302c32;
         }
 
-        /* TEK PROFİL FOTOĞRAFI */
+        .avatar-wrapper:hover {
+            box-shadow: 0 0 20px rgba(232,141,182,0.35);
+        }
+
         #avatarPreview {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            display: none;
             object-fit: cover;
-            border: 3px solid #e58bb8;
-            background: #302c32;
-            display: block;
+            border-radius: 50%;
         }
 
         .avatar-placeholder {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid #e58bb8;
-            background: #302c32;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 55px;
+            font-size: 45px;
+            user-select: none;
         }
 
-        #avatarInput {
-            width: 100%;
-            max-width: 320px;
-            color: #ddd;
+        #avatarFileName {
+            margin: 8px 0 20px;
+            color: #cfc8d0;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .profile-box h2 {
+            color: #ec91b9;
+            font-size: 36px;
+            margin: 10px 0 18px;
+        }
+
+        .user-email {
+            color: #cfc8d0;
+            margin-bottom: 25px;
         }
 
         #username {
             width: 100%;
             box-sizing: border-box;
-            margin-top: 25px;
-            padding: 16px 18px;
+            padding: 17px;
             border-radius: 16px;
-            border: 1px solid #665f69;
-            background: #211f23;
+            border: 1px solid #625b65;
+            background: #242125;
             color: white;
             font-size: 17px;
             outline: none;
+            margin-bottom: 20px;
         }
 
         #username:focus {
-            border-color: #e58bb8;
+            border-color: #e88db6;
         }
 
-        #saveBtn {
+        #saveBtn,
+        #logoutBtn {
             width: 100%;
-            margin-top: 18px;
             padding: 17px;
             border: none;
             border-radius: 30px;
-            background: #e58bb8;
-            color: #201c20;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
         }
 
+        #saveBtn {
+            background: #e88db6;
+            color: #211d22;
+        }
+
         #saveBtn:hover {
-            opacity: 0.9;
+            background: #f09bc2;
         }
 
         #logoutBtn {
-            width: 100%;
             margin-top: 10px;
-            padding: 17px;
-            border: none;
-            border-radius: 30px;
-            background: #403b43;
+            background: #454047;
             color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
         }
 
-        #message,
-        #avatarMessage {
+        #message {
             min-height: 22px;
-            margin-top: 15px;
-            color: #f09bc2;
-        }
-
-        #userEmail {
             margin-top: 18px;
-            color: #cfc5d3;
-            font-size: 16px;
-        }
-
-        h2 {
-            color: #f09bc2;
-            font-size: 34px;
-            margin: 25px 0 5px;
+            color: #f0a0c3;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>XOXO</h1>
+<header>
+    <h1>XOXO</h1>
 
-        <nav>
-            <a href="index.html">Ana Sayfa</a>
-            <a href="manga.html">Manga</a>
-            <a href="manhwa.html">Manhwa</a>
-            <a href="hakkimizda.html">Hakkımızda</a>
-        </nav>
-    </header>
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="manga.html">Manga</a>
+        <a href="manhwa.html">Manhwa</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+    </nav>
+</header>
 
+<main>
 
-    <main>
+    <section class="profile-page">
 
-        <section class="profile-page">
+        <div class="profile-box">
 
-            <div class="profile-box">
-
-                <div class="angel-decoration">
-                    ✦ 🪽 ✦
-                </div>
-
-
-                <h2>Profilim</h2>
-
-
-                <!-- TEK FOTOĞRAF ALANI -->
-                <div class="avatar-area">
-
-                    <img
-                        id="avatarPreview"
-                        src=""
-                        alt="Profil fotoğrafı"
-                    >
-
-                    <input
-                        type="file"
-                        id="avatarInput"
-                        accept="image/*"
-                    >
-
-                    <p id="avatarMessage"></p>
-
-                </div>
-
-
-                <!-- EMAIL -->
-                <p id="userEmail"></p>
-
-
-                <!-- KULLANICI ADI -->
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Kullanıcı adın"
-                    maxlength="30"
-                >
-
-
-                <!-- KAYDET -->
-                <button id="saveBtn">
-                    Profili Kaydet
-                </button>
-
-
-                <!-- ÇIKIŞ -->
-                <button id="logoutBtn">
-                    Çıkış Yap
-                </button>
-
-
-                <p id="message"></p>
-
+            <div class="angel-decoration">
+                ✦ 🪽 ✦
             </div>
 
-        </section>
+            <!-- TEK FOTOĞRAF ALANI -->
+            <label for="avatarInput" class="avatar-wrapper">
 
-    </main>
+                <img
+                    id="avatarPreview"
+                    src=""
+                    alt="Profil fotoğrafı"
+                >
 
+                <span
+                    id="avatarPlaceholder"
+                    class="avatar-placeholder"
+                >
+                    🪽
+                </span>
 
-    <!-- SUPABASE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+            </label>
 
+            <input
+                type="file"
+                id="avatarInput"
+                accept="image/*"
+                hidden
+            >
 
-    <script>
+            <p id="avatarFileName"></p>
 
-        /* =====================================================
-           SUPABASE AYARLARI
-           ===================================================== */
+            <h2>Profilim</h2>
 
-        const SUPABASE_URL = "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
+            <p id="userEmail" class="user-email"></p>
 
-        const SUPABASE_ANON_KEY = "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
+            <input
+                type="text"
+                id="username"
+                placeholder="Kullanıcı adın"
+                maxlength="30"
+            >
 
+            <button id="saveBtn">
+                Profili Kaydet
+            </button>
 
-        const { createClient } = supabase;
+            <button id="logoutBtn">
+                Çıkış Yap
+            </button>
 
-        const db = createClient(
-            SUPABASE_URL,
-            SUPABASE_ANON_KEY
-        );
+            <p id="message"></p>
 
+        </div>
 
-        /* =====================================================
-           ELEMENTLER
-           ===================================================== */
+    </section>
 
-        const avatarInput =
-            document.getElementById("avatarInput");
-
-        const avatarPreview =
-            document.getElementById("avatarPreview");
-
-        const avatarMessage =
-            document.getElementById("avatarMessage");
-
-        const usernameInput =
-            document.getElementById("username");
-
-        const saveBtn =
-            document.getElementById("saveBtn");
-
-        const logoutBtn =
-            document.getElementById("logoutBtn");
-
-        const message =
-            document.getElementById("message");
-
-        const userEmail =
-            document.getElementById("userEmail");
+</main>
 
 
-        /* =====================================================
-           PROFİLİ YÜKLE
-           ===================================================== */
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        async function loadProfile() {
+<script>
 
-            const {
-                data: {
-                    session
-                }
-            } = await db.auth.getSession();
+    /* =========================================
+       SUPABASE AYARLARI
+       ========================================= */
+
+    const SUPABASE_URL =
+        "https://mzskvwfwwxlvftvouffh.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+        "sb_publishable_HvBp7t00DICwT2q-LjFMjg_XuQr5hOV";
 
 
-            /* Giriş yapılmamışsa */
-            if (!session) {
+    const { createClient } = supabase;
 
-                window.location.href = "auth.html";
+    const db = createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
 
-                return;
+
+    /* =========================================
+       HTML ELEMENTLERİ
+       ========================================= */
+
+    const avatarInput =
+        document.getElementById("avatarInput");
+
+    const avatarPreview =
+        document.getElementById("avatarPreview");
+
+    const avatarPlaceholder =
+        document.getElementById("avatarPlaceholder");
+
+    const avatarFileName =
+        document.getElementById("avatarFileName");
+
+    const usernameInput =
+        document.getElementById("username");
+
+    const userEmail =
+        document.getElementById("userEmail");
+
+    const saveBtn =
+        document.getElementById("saveBtn");
+
+    const logoutBtn =
+        document.getElementById("logoutBtn");
+
+    const message =
+        document.getElementById("message");
+
+
+    /* =========================================
+       PROFİLİ YÜKLE
+       ========================================= */
+
+    async function loadProfile() {
+
+        message.textContent = "";
+
+        const {
+            data: {
+                session
             }
+        } = await db.auth.getSession();
 
 
-            const user = session.user;
+        /* Giriş yapılmamışsa */
 
+        if (!session) {
 
-            /* Email */
-            userEmail.textContent =
-                user.email || "";
+            window.location.href = "auth.html";
 
-
-            /* Profiles tablosundan bilgileri al */
-
-            const {
-                data: profile,
-                error
-            } = await db
-                .from("profiles")
-                .select("username, avatar_url")
-                .eq("id", user.id)
-                .maybeSingle();
-
-
-            if (error) {
-
-                console.error(
-                    "Profil alınamadı:",
-                    error
-                );
-
-                return;
-            }
-
-
-            /* Kullanıcı adı */
-
-            if (profile && profile.username) {
-
-                usernameInput.value =
-                    profile.username;
-            }
-
-
-            /* Profil fotoğrafı */
-
-            if (profile && profile.avatar_url) {
-
-                avatarPreview.src =
-                    profile.avatar_url;
-
-            } else {
-
-                /* Fotoğraf yoksa emoji göster */
-
-                avatarPreview.src =
-                    "data:image/svg+xml;charset=UTF-8," +
-                    encodeURIComponent(`
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="150"
-                             height="150"
-                             viewBox="0 0 150 150">
-
-                            <rect width="150"
-                                  height="150"
-                                  rx="75"
-                                  fill="#302c32"/>
-
-                            <text x="75"
-                                  y="95"
-                                  text-anchor="middle"
-                                  font-size="55">
-                                🪽
-                            </text>
-
-                        </svg>
-                    `);
-            }
+            return;
         }
 
 
-        /* =====================================================
-           KULLANICI ADI KAYDET
-           ===================================================== */
-
-        saveBtn.addEventListener(
-            "click",
-            async function () {
-
-                message.textContent =
-                    "Kaydediliyor...";
+        const userId =
+            session.user.id;
 
 
-                const {
-                    data: {
-                        session
-                    }
-                } = await db.auth.getSession();
+        /* Email */
+
+        userEmail.textContent =
+            session.user.email || "";
 
 
-                if (!session) {
+        /* Profiles tablosundan bilgileri al */
 
-                    window.location.href =
-                        "auth.html";
-
-                    return;
-                }
-
-
-                const username =
-                    usernameInput.value.trim();
-
-
-                if (!username) {
-
-                    message.textContent =
-                        "Kullanıcı adı boş olamaz.";
-
-                    return;
-                }
+        const {
+            data: profile,
+            error
+        } = await db
+            .from("profiles")
+            .select("username, avatar_url")
+            .eq("id", userId)
+            .maybeSingle();
 
 
-                const {
-                    error
-                } = await db
-                    .from("profiles")
-                    .update({
-                        username: username
-                    })
-                    .eq("id", session.user.id);
+        if (error) {
+
+            console.error(
+                "Profil yükleme hatası:",
+                error
+            );
+
+            message.textContent =
+                "Profil bilgileri alınamadı.";
+
+            return;
+        }
 
 
-                if (error) {
+        /* Kullanıcı adı */
 
-                    console.error(error);
+        if (profile && profile.username) {
 
-                    message.textContent =
-                        "Profil kaydedilemedi.";
-
-                    return;
-                }
+            usernameInput.value =
+                profile.username;
+        }
 
 
-                message.textContent =
-                    "Profil başarıyla kaydedildi!";
+        /* Profil fotoğrafı */
+
+        if (
+            profile &&
+            profile.avatar_url
+        ) {
+
+            avatarPreview.src =
+                profile.avatar_url +
+                (profile.avatar_url.includes("?")
+                    ? "&"
+                    : "?") +
+                "t=" +
+                Date.now();
+
+            avatarPreview.style.display =
+                "block";
+
+            avatarPlaceholder.style.display =
+                "none";
+        }
+
+    }
+
+
+    /* =========================================
+       FOTOĞRAF SEÇİLDİĞİNDE
+       ========================================= */
+
+    avatarInput.addEventListener(
+        "change",
+        async function () {
+
+            const file =
+                avatarInput.files[0];
+
+
+            if (!file) {
+                return;
             }
-        );
 
 
-        /* =====================================================
-           PROFİL FOTOĞRAFI YÜKLE
-           ===================================================== */
+            /* Sadece resim */
 
-        avatarInput.addEventListener(
-            "change",
-            async function () {
+            if (!file.type.startsWith("image/")) {
 
-                const file =
-                    avatarInput.files[0];
+                message.textContent =
+                    "Lütfen bir fotoğraf seç.";
 
+                avatarInput.value = "";
 
-                if (!file) return;
+                return;
+            }
 
 
-                /* Sadece resim */
+            /*
+             * FOTOĞRAFI ANINDA GÖSTER
+             * Supabase'i beklemiyoruz.
+             */
 
-                if (!file.type.startsWith("image/")) {
-
-                    avatarMessage.textContent =
-                        "Lütfen bir fotoğraf seç.";
-
-                    return;
-                }
+            const reader =
+                new FileReader();
 
 
-                avatarMessage.textContent =
-                    "Fotoğraf yükleniyor...";
+            reader.onload =
+                function (event) {
 
+                    avatarPreview.src =
+                        event.target.result;
+
+                    avatarPreview.style.display =
+                        "block";
+
+                    avatarPlaceholder.style.display =
+                        "none";
+                };
+
+
+            reader.readAsDataURL(file);
+
+
+            avatarFileName.textContent =
+                file.name;
+
+
+            message.textContent =
+                "Fotoğraf seçildi. Profili Kaydet'e bas.";
+
+
+            /*
+             * Burada Supabase'e yüklemiyoruz.
+             *
+             * Kullanıcı "Profili Kaydet"
+             * butonuna basınca isim + fotoğraf
+             * beraber kaydedilecek.
+             */
+        }
+    );
+
+
+    /* =========================================
+       PROFİLİ KAYDET
+       ========================================= */
+
+    saveBtn.addEventListener(
+        "click",
+        async function () {
+
+            saveBtn.disabled = true;
+
+            saveBtn.textContent =
+                "Kaydediliyor...";
+
+            message.textContent = "";
+
+
+            try {
 
                 const {
                     data: {
@@ -488,133 +476,225 @@
                     session.user.id;
 
 
-                /* Dosya uzantısı */
-
-                const fileExt =
-                    file.name
-                        .split(".")
-                        .pop()
-                        .toLowerCase();
+                const username =
+                    usernameInput.value.trim();
 
 
-                /*
-                 * Her kullanıcı için tek dosya.
-                 * Böylece eski fotoğrafın yerine yenisi gelir.
-                 */
+                /* Kullanıcı adı kontrolü */
 
-                const fileName =
-                    userId + "." + fileExt;
+                if (!username) {
 
-
-                /* Storage'a yükle */
-
-                const {
-                    error: uploadError
-                } = await db.storage
-                    .from("avatars")
-                    .upload(
-                        fileName,
-                        file,
-                        {
-                            upsert: true,
-                            contentType: file.type
-                        }
-                    );
-
-
-                if (uploadError) {
-
-                    console.error(
-                        "Upload hatası:",
-                        uploadError
-                    );
-
-                    avatarMessage.textContent =
-                        "Fotoğraf yüklenemedi.";
+                    message.textContent =
+                        "Kullanıcı adı boş olamaz.";
 
                     return;
                 }
 
 
-                /* Public URL */
+                /* =================================
+                   1. KULLANICI ADINI KAYDET
+                   ================================= */
 
                 const {
-                    data: urlData
-                } = db.storage
-                    .from("avatars")
-                    .getPublicUrl(fileName);
-
-
-                const avatarUrl =
-                    urlData.publicUrl +
-                    "?t=" +
-                    Date.now();
-
-
-                /* profiles.avatar_url güncelle */
-
-                const {
-                    error: updateError
+                    error: usernameError
                 } = await db
                     .from("profiles")
                     .update({
-                        avatar_url: avatarUrl
+                        username: username
                     })
-                    .eq(
-                        "id",
-                        userId
-                    );
+                    .eq("id", userId);
 
 
-                if (updateError) {
+                if (usernameError) {
 
                     console.error(
-                        "Database hatası:",
-                        updateError
+                        "Username hatası:",
+                        usernameError
                     );
 
-                    avatarMessage.textContent =
-                        "Fotoğraf veritabanına kaydedilemedi.";
+                    message.textContent =
+                        "Kullanıcı adı kaydedilemedi.";
 
                     return;
                 }
 
 
-                /* Sayfada hemen göster */
+                /* =================================
+                   2. FOTOĞRAF SEÇİLDİYSE YÜKLE
+                   ================================= */
 
-                avatarPreview.src =
-                    avatarUrl;
+                const file =
+                    avatarInput.files[0];
 
 
-                avatarMessage.textContent =
-                    "Fotoğraf kaydedildi!";
+                if (file) {
+
+                    const fileExt =
+                        file.name
+                            .split(".")
+                            .pop()
+                            .toLowerCase();
+
+
+                    /*
+                     * Her kullanıcı için
+                     * aynı dosya adı.
+                     *
+                     * Eski fotoğrafın üzerine yazar.
+                     */
+
+                    const fileName =
+                        userId +
+                        "." +
+                        fileExt;
+
+
+                    const {
+                        error: uploadError
+                    } = await db.storage
+                        .from("avatars")
+                        .upload(
+                            fileName,
+                            file,
+                            {
+                                upsert: true,
+                                contentType: file.type
+                            }
+                        );
+
+
+                    if (uploadError) {
+
+                        console.error(
+                            "Fotoğraf yükleme hatası:",
+                            uploadError
+                        );
+
+                        message.textContent =
+                            "Fotoğraf yüklenemedi: " +
+                            uploadError.message;
+
+                        return;
+                    }
+
+
+                    /* =================================
+                       3. PUBLIC URL AL
+                       ================================= */
+
+                    const {
+                        data: urlData
+                    } = db.storage
+                        .from("avatars")
+                        .getPublicUrl(
+                            fileName
+                        );
+
+
+                    const avatarUrl =
+                        urlData.publicUrl;
+
+
+                    /* =================================
+                       4. PROFILES AVATAR_URL GÜNCELLE
+                       ================================= */
+
+                    const {
+                        error: avatarError
+                    } = await db
+                        .from("profiles")
+                        .update({
+                            avatar_url:
+                                avatarUrl
+                        })
+                        .eq(
+                            "id",
+                            userId
+                        );
+
+
+                    if (avatarError) {
+
+                        console.error(
+                            "Avatar database hatası:",
+                            avatarError
+                        );
+
+                        message.textContent =
+                            "Fotoğraf veritabanına kaydedilemedi.";
+
+                        return;
+                    }
+
+
+                    /* Cache'i temizlemek için */
+
+                    avatarPreview.src =
+                        avatarUrl +
+                        "?t=" +
+                        Date.now();
+
+                }
+
+
+                /* =================================
+                   BAŞARILI
+                   ================================= */
+
+                message.textContent =
+                    "Profil başarıyla kaydedildi!";
+
+                avatarInput.value = "";
+
+                avatarFileName.textContent = "";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Genel hata:",
+                    error
+                );
+
+                message.textContent =
+                    "Bir hata oluştu: " +
+                    error.message;
+
+            } finally {
+
+                saveBtn.disabled = false;
+
+                saveBtn.textContent =
+                    "Profili Kaydet";
             }
-        );
+
+        }
+    );
 
 
-        /* =====================================================
-           ÇIKIŞ
-           ===================================================== */
+    /* =========================================
+       ÇIKIŞ
+       ========================================= */
 
-        logoutBtn.addEventListener(
-            "click",
-            async function () {
+    logoutBtn.addEventListener(
+        "click",
+        async function () {
 
-                await db.auth.signOut();
+            await db.auth.signOut();
 
-                window.location.href =
-                    "auth.html";
-            }
-        );
+            window.location.href =
+                "auth.html";
+        }
+    );
 
 
-        /* =====================================================
-           BAŞLAT
-           ===================================================== */
+    /* =========================================
+       SAYFA AÇILINCA PROFİLİ GETİR
+       ========================================= */
 
-        loadProfile();
+    loadProfile();
 
-    </script>
+</script>
 
 </body>
 </html>
