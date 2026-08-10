@@ -214,7 +214,68 @@ avatarInput.addEventListener("change", async function () {
 
 });
 </script>
+<script>
+async function loadProfile() {
 
+    const { data: { session } } = await db.auth.getSession();
+
+    if (!session) {
+        window.location.href = "auth.html";
+        return;
+    }
+
+    const { data: profile } = await db
+        .from("profiles")
+        .select("username")
+        .eq("id", session.user.id)
+        .maybeSingle();
+
+    if (profile) {
+        document.getElementById("username").value =
+            profile.username || "";
+    }
+}
+
+
+document.getElementById("saveBtn").addEventListener("click", async function () {
+
+    const { data: { session } } = await db.auth.getSession();
+
+    if (!session) {
+        window.location.href = "auth.html";
+        return;
+    }
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const message =
+        document.getElementById("message");
+
+    if (!username) {
+        message.textContent = "Kullanıcı adı yazmalısın.";
+        return;
+    }
+
+    const { error } = await db
+        .from("profiles")
+        .upsert({
+            id: session.user.id,
+            username: username
+        });
+
+    if (error) {
+        console.error(error);
+        message.textContent = "Profil kaydedilemedi.";
+        return;
+    }
+
+    message.textContent = "Profil başarıyla kaydedildi! 🪽";
+});
+
+
+loadProfile();
+</script>
 </body>
 
 </html>
